@@ -1,11 +1,33 @@
-use cosmwasm_schema::{cw_serde, QueryResponses};
+use cosmwasm_std::{Addr, Uint128};
+use schemars::JsonSchema;
+use serde::{Deserialize, Serialize};
 
-#[cw_serde]
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
 pub struct InstantiateMsg {}
 
-#[cw_serde]
-pub enum ExecuteMsg {}
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub enum ExecuteMsg {
+    FractionalizeNFT {
+        nft_contract: String,
+        token_id: String,
+        total_shares: Uint128,
+        token_name: String,
+        token_symbol: String,
+    },
+    RedeemNFT {
+        nft_contract: String,
+        token_id: String,
+    },
+}
 
-#[cw_serde]
-#[derive(QueryResponses)]
-pub enum QueryMsg {}
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub enum QueryMsg {
+    FractionalNFTInfo {
+        nft_contract: String,
+        token_id: String,
+    },
+    FractionalTokenAddress {
+        nft_contract: String,
+        token_id: String,
+    },
+}

@@ -8,6 +8,25 @@ pub enum ContractError {
 
     #[error("Unauthorized")]
     Unauthorized {},
-    // Add any other custom errors you like here.
-    // Look at https://docs.rs/thiserror/1.0.21/thiserror/ for details.
+
+    #[error("NFT not found")]
+    NFTNotFound {},
+
+    #[error("Fractional NFT not found")]
+    FractionalNFTNotFound {},
+
+    #[error("Insufficient fractional tokens")]
+    InsufficientTokens {},
+
+    #[error("Already fractionalized")]
+    AlreadyFractionalized {},
+
+    #[error("Cannot fractionalize zero shares")]
+    ZeroShares {},
+
+    #[error("CW20 Instantiate Failed")]
+    CW20InstantiateFailed {},
+
+    #[error("CW20 Hook Failed")]
+    CW20HookFailed {},
 }
